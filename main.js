@@ -95,3 +95,20 @@ if (logoutBtn) {
     logoutBtn.addEventListener("click", () => auth.logout());
   }
 }
+
+
+const passwordInput = document.getElementById('password');
+const togglePassword = document.getElementById('togglePassword');
+
+togglePassword.addEventListener('click', () => {
+  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+  passwordInput.setAttribute('type', type);
+
+  // Cool icon effect: toggle emoji or rotate
+  togglePassword.textContent = type === 'password' ? '' : '🙈';
+  togglePassword.style.transition = 'transform 0.3s';
+  togglePassword.style.transform = 'translateY(-50%) rotate(360deg)';
+  setTimeout(() => {
+    togglePassword.style.transform = 'translateY(-50%) rotate(0deg)';
+  }, 300);
+});
