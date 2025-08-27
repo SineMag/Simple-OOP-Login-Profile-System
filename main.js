@@ -14,7 +14,7 @@ class UserAuth {
       username,
       email,
       password,
-      createdAt: new Date().toLocaleString(),
+      createdAt: new Date().toLocaleDateString(),
       loggedIn: false
     };
     this.users.push(newUser);
@@ -54,7 +54,7 @@ class UserAuth {
   }
 }
 
-// DOM Handling
+
 const auth = new UserAuth();
 
 // Signup page
@@ -97,18 +97,24 @@ if (logoutBtn) {
 }
 
 
-const passwordInput = document.getElementById('password');
-const togglePassword = document.getElementById('togglePassword');
+//show/hide password
+const passwordInput = document.getElementById("password");
+const togglePassword = document.getElementById("togglePassword");
 
-togglePassword.addEventListener('click', () => {
-  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-  passwordInput.setAttribute('type', type);
+if (passwordInput && togglePassword) {
 
-  // Cool icon effect: toggle emoji or rotate
-  togglePassword.textContent = type === 'password' ? '' : '🙈';
-  togglePassword.style.transition = 'transform 0.3s';
-  togglePassword.style.transform = 'translateY(-50%) rotate(360deg)';
-  setTimeout(() => {
-    togglePassword.style.transform = 'translateY(-50%) rotate(0deg)';
-  }, 300);
-});
+  togglePassword.textContent = "👁️";
+
+  togglePassword.addEventListener("click", () => {
+    const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+    passwordInput.setAttribute("type", type);
+
+
+    togglePassword.textContent = type === "password" ? "👁️" : "🙈";
+    togglePassword.style.transition = "transform 0.3s";
+    togglePassword.style.transform = "translateY(-50%) rotate(360deg)";
+    setTimeout(() => {
+      togglePassword.style.transform = "translateY(-50%) rotate(0deg)";
+    }, 300);
+  });
+}
